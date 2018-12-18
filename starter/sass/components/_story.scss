@@ -1,0 +1,85 @@
+.story {
+  width: 75%;
+  margin: 0 auto; // center block element in block element
+  box-shadow: 0 3rem 6rem rgba($color-black, 0.1);
+  background-color: rgba($color-white, 0.6);
+  border-radius: 3px;
+  padding: 6rem;
+  padding-left: 9rem;
+  font-size: $default-font-size;
+  transform: skewX(-12deg);
+
+  @include respond(tab-port) {
+    width: 100%;
+    padding: 4rem;
+    padding-left: 7rem;
+  }
+
+  @include respond(phone) {
+    transform: skewX(0);
+  }
+
+  &__shape {
+    width: 15rem;
+    height: 15rem;
+    float: left;
+    -webkit-shape-outside: circle(50% at 50% 50%);
+    // makes a circle with 50% of width and height of element, text flows around it
+    // only works if the element has been floated and has width and height
+    shape-outside: circle(50% at 50% 50%);
+    // makes the element a circle
+    clip-path: circle(50% at 50% 50%);
+    // The translate property is to make add padding for the text around the circle image
+    transform: translate(-3rem) skewX(12deg);
+    position: relative;
+
+    @include respond(phone) {
+      transform: tranlate(-3rem) skewX(0);
+    }
+  }
+
+  &__img {
+    height: 100%;
+    // Move image to the center of page, and make it big
+    transform: translateX(-4rem) scale(1.4);
+    transition: all 0.5s;
+    backface-visibility: hidden;
+  }
+
+  &__text {
+    transform: skewX(12deg);
+
+    @include respond(phone) {
+      transform: skewX(0);
+    }
+  }
+
+  &__caption {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    // make the text low so it comes in on hover
+    transform: translate(-50%, 50%);
+    color: $color-white;
+    text-transform: uppercase;
+    font-size: 1.7rem;
+    text-align: center;
+    opacity: 0;
+    // very important for animation
+    transition: all 0.5s;
+    // fix animation error
+    backface-visibility: hidden;
+  }
+
+  &:hover &__caption {
+    opacity: 1;
+    transform: translate(-50%, -50%);
+  }
+
+  &:hover &__img {
+    // make the image smaller
+    transform: translateX(-4rem) scale(1);
+    // make the img blurry and reduce the brightness from 100%
+    filter: blur(3px) brightness(85%);
+  }
+}

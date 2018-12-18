@@ -1,0 +1,19 @@
+{
+  "name": "starter",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "server": "live-server",
+    "compile:sass": "node-sass sass/main.scss css/style.css -w sass/"
+  },
+  "keywords": [],
+  "author": "nur-sh",
+  "license": "ISC",
+  "devDependencies": {
+    "node-sass": "^4.9.3"
+  },
+  "dependencies": {
+    "live-server": "^1.2.0"
+  }
+}
